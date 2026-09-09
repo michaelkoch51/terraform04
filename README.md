@@ -1,4 +1,28 @@
 ## Статус инфраструктуры (Yandex Cloud + Terraform)
+# Домашнее задание №4. Продвинутые методы работы с Terraform
+
+## Задание 1. Создание ВМ через remote-модули
+
+**Требование:** с помощью двух вызовов модуля создать две ВМ (marketing и analytics), использовать labels, передать ssh-ключ через переменную в cloud-init, установить nginx.
+
+**Что сделано:**
+
+В корневом `main.tf` описаны два вызова модуля `./vm` — для marketing и analytics. Каждой ВМ переданы labels с указанием проекта:
+
+```hcl
+module "marketing_vm" {
+  source         = "./vm"
+  env_name       = "marketing"
+  instance_name  = "marketing"
+  instance_count = 1
+  image_id       = data.yandex_compute_image.ubuntu_2204.id
+  subnet_id      = module.vpc_dev.subnet_id
+  public_ip      = true
+  labels = { project = "marketing" }
+  metadata = {
+    user-data          = templatefile("
+```
+
 
 Инфраструктура успешно развернута в зоне `ru-central1-a`. ВМ были пересозданы (`terraform taint` + `apply`) для применения актуального SSH‑ключа пользователя.
 
