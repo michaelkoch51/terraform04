@@ -1,4 +1,4 @@
-# Отчёт по домашнему заданию №4: Terraform State & Modules
+# Отчёт по домашнему заданию №4: Продвинутые методы работы с Terraform
 
 ## Статус
 ✅ Задание выполнено полностью.  
@@ -18,7 +18,8 @@
 **Подтверждение:**
 - Скриншоты меток ВМ в консоли Yandex Cloud.
 - Проверка работы nginx внутри ВМ.
-
+![](https://github.com/user-attachments/assets/ca20ee5d-58cf-4f20-9d1c-febed7e547f9)
+![](https://github.com/user-attachments/assets/b8049419-d3d8-47d9-8e25-022fd6469a06)
 ---
 
 ## Задание 2. Модуль VPC (сеть и подсеть)
@@ -30,8 +31,6 @@
 
 **Подтверждение:**
 - Вывод `terraform console` с обращением к `module.vpc_dev.subnet_id`.
-- Скриншоты сети и подсети в консоли Yandex Cloud.
-
 ---
 
 ## Задание 3. Операции с Terraform state
@@ -48,7 +47,7 @@
 **Доказательство:**
 - Скриншот вывода `terraform plan` со строкой `No changes`.
 - Логи команд `import` в истории терминала.
-
+![](https://github.com/user-attachments/assets/56d69384-8532-4246-8e2e-5db535004b81)
 ---
 
 ## Очистка и безопасность
@@ -57,7 +56,6 @@
 - Выполнен `terraform destroy` — все ресурсы в Yandex Cloud удалены.
 - Баланс не расходуется.
 
-## Ссылки и артефакты
-- Репозиторий: https://github.com/michaelkoch51/terraform04
-- Ветка: `terraform-04`
-- Скриншоты: папка `img/`
+![](https://github.com/user-attachments/assets/fd3ea96e-4823-42e9-a6fc-c96d77d60109)
+![](https://github.com/user-attachments/assets/52073a5d-ba17-4da8-b7df-4cbad65b13cf)
+![](https://github.com/user-attachments/assets/11e93a42-72c4-4e19-958b-f15ef664b5b5)
