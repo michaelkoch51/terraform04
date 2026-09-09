@@ -44,3 +44,11 @@ Docker установлен и настроен на ВМ `marketing-marketing-1
 
 ```bash
 docker run --name nginx-test -d -p 8080:80 nginx
+```
+
+docker ps
+
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS        PORTS                                     NAMES
+8c21680e4716   nginx     "/docker-entrypoint.…"   6 seconds ago   Up 1 second   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   nginx-test
+
+
