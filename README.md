@@ -65,4 +65,25 @@ CONTAINER ID   IMAGE                COMMAND                  CREATED         STA
 1686da6c1b61   mysql:8.0            "docker-entrypoint.s…"   ...             Up ... (health: starting)           3306/tcp, 33060/tcp                           devops-project_db_1
 8c21680e4716   nginx                "/docker-entrypoint.…"   ...             Up ...                              0.0.0.0:8080->80/tcp, [::]:8080->80/tcp       nginx-test
 
+# DevOps-проект: Terraform + Docker + FastAPI + MySQL
+
+## Статус проекта
+
+✅ Инфраструктура поднята в Yandex Cloud (Terraform).  
+✅ Docker Compose v2 управляет мультисервисным приложением.  
+✅ FastAPI успешно подключается к MySQL через внутреннюю сеть Docker.  
+✅ Эндпоинт `/health` возвращает `{"health": "healthy", "db": "connected"}` — доказательство реального взаимодействия сервисов.
+
+---
+
+## Демонстрация работы
+
+### 1. Статус контейнеров
+
+Команда: `docker ps`
+
+```text
+CONTAINER ID   IMAGE                COMMAND                  ...   PORTS                        NAMES
+268f7126d209   devops-project-api   "uvicorn main:app --…"   ...   0.0.0.0:8000->8000/tcp       devops-project-api-1
+657ca26b2e5b   mysql:8.0            "docker-entrypoint.s…"   ...   3306/tcp, 33060/tcp           devops-project-db-1
 
