@@ -51,4 +51,13 @@ docker ps
 CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS        PORTS                                     NAMES
 8c21680e4716   nginx     "/docker-entrypoint.…"   6 seconds ago   Up 1 second   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   nginx-test
 
+## Демонстрация работы стека FastAPI + MySQL (Docker Compose)
+
+Стек развёрнут на ВМ `marketing-marketing-1` (Ubuntu 22.04, Yandex Cloud) с использованием утилиты `docker-compose` (v1.29.2).
+
+**Команда запуска:**
+```bash
+docker-compose up -d --build
+```
+
 
