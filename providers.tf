@@ -3,6 +3,9 @@ terraform {
     yandex = {
       source = "yandex-cloud/yandex"
     }
+    random = {
+      source = "hashicorp/random"
+    }
   }
   required_version = ">= 1.12.0"
 }
@@ -13,3 +16,4 @@ provider "yandex" {
   folder_id = var.folder_id
   zone      = var.default_zone
 }
+
