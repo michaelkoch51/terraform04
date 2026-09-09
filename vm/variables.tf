@@ -36,3 +36,9 @@ variable "security_group_ids" {
   default = []
 }
 
+variable "image_id" {
+  type        = string
+  description = "ID образа для загрузочного диска"
+  default     = ""
+}
+

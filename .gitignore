@@ -1,4 +1,6 @@
-personal.auto.tfvars
 .terraform/
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
+*.tfvars
+personal.auto.tfvars
+.DS_Store
