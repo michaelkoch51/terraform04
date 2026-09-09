@@ -60,4 +60,9 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS        
 docker-compose up -d --build
 ```
 
+CONTAINER ID   IMAGE                COMMAND                  CREATED         STATUS                             PORTS                                         NAMES
+39a1093e5df3   devops-project_api   "uvicorn main:app --…"   ...             Up ...                              0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp   devops-project_api_1
+1686da6c1b61   mysql:8.0            "docker-entrypoint.s…"   ...             Up ... (health: starting)           3306/tcp, 33060/tcp                           devops-project_db_1
+8c21680e4716   nginx                "/docker-entrypoint.…"   ...             Up ...                              0.0.0.0:8080->80/tcp, [::]:8080->80/tcp       nginx-test
+
 
