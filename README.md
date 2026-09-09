@@ -22,6 +22,7 @@
 ssh -i ~/.ssh/id_ed25519 ubuntu@51.250.65.78
 ```
 
+
 Welcome to Ubuntu 22.04.5 LTS ...
 ubuntu@fhmiqrquk7j6dqcg96ui:~\$ nginx -v
 nginx version: nginx/1.18.0 (Ubuntu)
@@ -32,3 +33,14 @@ ubuntu@fhmiqrquk7j6dqcg96ui:~\$ systemctl status nginx --no-pager | head -n 5
      Active: active (running) since Wed 2026-09-09 16:13:53 UTC; 1min 26s ago
        Docs: man:nginx(8)
     Process: 1391 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+
+## Проверка работы Docker и тестового контейнера
+
+Docker установлен и настроен на ВМ `marketing-marketing-1` (Ubuntu 22.04, Yandex Cloud). Пользователь `ubuntu` добавлен в группу `docker`, команды выполняются без `sudo`.
+
+### Запуск тестового контейнера Nginx
+
+Для проверки работоспособности Docker был запущен контейнер с веб‑сервером Nginx:
+
+```bash
+docker run --name nginx-test -d -p 8080:80 nginx
