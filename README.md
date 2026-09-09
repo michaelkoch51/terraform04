@@ -74,6 +74,25 @@ CONTAINER ID   IMAGE                COMMAND                  CREATED         STA
 ✅ FastAPI успешно подключается к MySQL через внутреннюю сеть Docker.  
 ✅ Эндпоинт `/health` возвращает `{"health": "healthy", "db": "connected"}` — доказательство реального взаимодействия сервисов.
 
+### 3. Эндпоинт `/users`: чтение данных из БД
+
+Команда: `curl http://localhost:8000/users`
+
+```json
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com"
+    }
+  ]
+}
+
+Получение списка пользователей из таблицы users в MySQL через FastAPI.
+
+Пояснение: Приложение выполняет реальный SELECT к таблице users, преобразует строки в JSON и возвращает их клиенту. Это демонстрирует полноценную работу с данными в контейнеризованном стеке.
+
 ---
 
 ## Демонстрация работы
@@ -86,4 +105,5 @@ CONTAINER ID   IMAGE                COMMAND                  CREATED         STA
 CONTAINER ID   IMAGE                COMMAND                  ...   PORTS                        NAMES
 268f7126d209   devops-project-api   "uvicorn main:app --…"   ...   0.0.0.0:8000->8000/tcp       devops-project-api-1
 657ca26b2e5b   mysql:8.0            "docker-entrypoint.s…"   ...   3306/tcp, 33060/tcp           devops-project-db-1
+```
 
