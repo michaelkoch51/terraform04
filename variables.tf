@@ -1,11 +1,6 @@
 variable "token" { 
   type = string 
 }
-variable "yc_token" {
-  type        = string
-  default     = ""
-  description = "IAM token for Yandex Cloud"
-}
 
 variable "cloud_id" { 
   type = string 

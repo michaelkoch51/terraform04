@@ -1,6 +1,33 @@
 data "yandex_compute_image" "ubuntu_2204" {
   family = "ubuntu-2204-lts"
 }
+# Security group для VM
+resource "yandex_vpc_security_group" "vm_sg" {
+  name       = "vm-security-group"
+  network_id = module.vpc_dev.vpc_id
+
+  ingress {
+    description    = "SSH"
+    protocol       = "TCP"
+    port           = 22
+    v4_cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description    = "HTTP"
+    protocol       = "TCP"
+    port           = 80
+    v4_cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    description    = "Allow all outbound"
+    protocol       = "ANY"
+    from_port      = 0
+    to_port        = 65535
+    v4_cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 
 # 1. Модуль сети
 module "vpc_dev" {
@@ -12,6 +39,7 @@ module "vpc_dev" {
 
 # 2. Модуль для ВМ маркетинга
 module "marketing_vm" {
+  security_group_ids = [yandex_vpc_security_group.vm_sg.id]
   source         = "./vm"
   env_name       = "marketing"
   instance_name  = "marketing"
@@ -28,6 +56,7 @@ module "marketing_vm" {
 
 # 3. Модуль для ВМ аналитики
 module "analytics_vm" {
+  security_group_ids = [yandex_vpc_security_group.vm_sg.id]
   source         = "./vm"
   env_name       = "analytics"
   instance_name  = "analytics"
