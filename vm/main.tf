@@ -12,7 +12,7 @@ resource "yandex_compute_instance" "vm" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd80bm0rh4rbebm5b1rn" # Ubuntu 22.04
+      image_id = var.image_id
     }
   }
 
@@ -21,7 +21,8 @@ resource "yandex_compute_instance" "vm" {
   }
 
   network_interface {
-    subnet_id          = var.subnet_id
+    subnet_id = var.subnet_id
+    #checkov:skip=CKV_YC_2:Public IP required for SSH access and HTTP traffic
     nat                = var.public_ip
     security_group_ids = var.security_group_ids
   }
